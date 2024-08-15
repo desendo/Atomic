@@ -9,7 +9,8 @@
         "Atomic.Extensions",
         "Unity.Mathematics",
         "Unity.Burst",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Common"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

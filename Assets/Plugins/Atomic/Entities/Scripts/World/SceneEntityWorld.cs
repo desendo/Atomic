@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
+
 
 namespace Atomic.Entities
 {
@@ -28,16 +26,11 @@ namespace Atomic.Entities
         [SerializeField]
         private bool scanEntities = true;
 
-#if ODIN_INSPECTOR
-        [ShowIf(nameof(scanEntities))]
-#endif
+
         [SerializeField]
         private bool includeInactiveOnScan = true;
 
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
+
         public string Name
         {
             get => _world.Name;
@@ -77,13 +70,7 @@ namespace Atomic.Entities
 #endif
         }
 
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Debug")]
-        [PropertyOrder(95)]
-        [Button("Refresh"), HideInPlayMode]
-        [GUIColor(0f, 0.83f, 1f)]
-        [PropertySpace(SpaceAfter = 8, SpaceBefore = 8)]
-#endif
+
         private void RefreshInEditMode()
         {
             _world.Name = name;
@@ -112,19 +99,13 @@ namespace Atomic.Entities
             remove => _world.OnEntityDeleted -= value;
         }
 
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
+
         public int EntityCount
         {
             get { return _world.EntityCount; }
         }
 
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Debug")]
-        [ShowInInspector, ReadOnly]
-#endif
+
         public IReadOnlyList<IEntity> Entities
         {
             get { return _world.Entities; }
@@ -160,10 +141,7 @@ namespace Atomic.Entities
             return _world.GetEntitiesWithValue(valueId, results);
         }
 
-#if ODIN_INSPECTOR
-        [Title("Entities")]
-        [Button]
-#endif
+
         public bool HasEntity(IEntity entity)
         {
             return _world.HasEntity(entity);
@@ -174,25 +152,18 @@ namespace Atomic.Entities
             return _world.CopyEntitiesTo(results);
         }
 
-#if ODIN_INSPECTOR
-        [Button]
-#endif
         public bool AddEntity(IEntity entity)
         {
             return _world.AddEntity(entity);
         }
 
-#if ODIN_INSPECTOR
-        [Button]
-#endif
+
         public bool DelEntity(IEntity entity)
         {
             return _world.DelEntity(entity);
         }
 
-#if ODIN_INSPECTOR
-        [Button]
-#endif
+
         public void ClearEntities()
         {
             _world.ClearEntities();
@@ -202,58 +173,37 @@ namespace Atomic.Entities
 
         #region Lifecycle
 
-#if ODIN_INSPECTOR
-        [Title("Lifecycle")]
-        [Button]
-#endif
+
         public void InitEntities()
         {
             _world.InitEntities();
         }
 
-#if ODIN_INSPECTOR
-        [Button]
-#endif
         public void EnableEntities()
         {
             _world.EnableEntities();
         }
 
-#if ODIN_INSPECTOR
-        [Button]
-#endif
         public void DisableEntities()
         {
             _world.DisableEntities();
         }
 
-#if ODIN_INSPECTOR
-        [Button]
-#endif
         public void DisposeEntities()
         {
             _world.DisposeEntities();
         }
 
-#if ODIN_INSPECTOR
-        [Button]
-#endif
         public void UpdateEntities(float deltaTime)
         {
             _world.UpdateEntities(deltaTime);
         }
 
-#if ODIN_INSPECTOR
-        [Button]
-#endif
         public void FixedUpdateEntities(float deltaTime)
         {
             _world.FixedUpdateEntities(deltaTime);
         }
 
-#if ODIN_INSPECTOR
-        [Button]
-#endif
         public void LateUpdateEntities(float deltaTime)
         {
             _world.LateUpdateEntities(deltaTime);
